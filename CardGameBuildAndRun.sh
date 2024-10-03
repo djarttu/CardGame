@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# git submodule add https://github.com/google/googletest.git
-# git submodule update --init --recursive
+git submodule add https://github.com/google/googletest.git
+git submodule update --init --recursive
 
 cmake -S . -B build
 

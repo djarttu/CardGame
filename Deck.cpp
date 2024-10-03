@@ -22,7 +22,7 @@ std::string Deck::Add(uint16_t numOfCards)
 	if(availableCards.size() > 0){
 		deck.insert(deck.end(), availableCards.begin(), availableCards.end());
 	}
-	ss << availableCards.size() << "added top of deck";
+	ss << availableCards.size() << " cards added top of deck";
 	return ss.str();
 };
 
@@ -75,7 +75,7 @@ std::string Deck::Reveal()
 	{
 		for(const auto& card : deck)
 		{
-			ss << card.country << card.value << '\n';
+			ss << card.country << card.value << std::endl;
 		}
 	}
 	
@@ -83,6 +83,7 @@ std::string Deck::Reveal()
 	{
 		ss << "Deck is empty \n";
 	}
+	std::string str = ss.str();
 	return ss.str();
 };
 
@@ -100,11 +101,16 @@ std::string Deck::RevealTop()
 	return ss.str();
 };
 
-void Deck::Shuffle()
+std::string Deck::Shuffle()
 {
+	if(deck.size() == 1 || deck.empty())
+	{
+		return "One cannot shuffle 0 or 1 card";
+	}
 	std::random_device rd;
 	std::mt19937 g(rd());    
 	std::shuffle(deck.begin(), deck.end(), g);
+	return "Shuffled puffled";
 }
 
 std::pair<uint16_t, uint16_t> Deck::Size()
@@ -128,12 +134,10 @@ std::vector<Card> Deck::GetFromContainer(uint16_t amount)
 	std::vector<Card> temporary;
 	if(cardContainer.size() == 0)
 	{
-		std::cout << "Container is empty, cannot get anymore" << std::endl;
 		return temporary;
 	}
-	if(amount > cardContainer.size() && cardContainer.size() > 0)
+	if(amount > cardContainer.size())
 	{
-		std::cout << "You requested " << amount << " cards. Only " <<  cardContainer.size() << " are available in the container" << std::endl;
 		amount = cardContainer.size(); 
 	}
 	for(uint16_t i = 0; i < amount; i++)

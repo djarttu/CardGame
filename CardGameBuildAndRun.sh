@@ -10,9 +10,10 @@ then
     cmake --build build --target CardGame
     ./build/CardGame
 
-elif [ "$1" = "build-tests" ]; 
+elif [ "$1" = "build-and-run-tests" ]; 
     then
         cmake --build build --target Tests
+        ./build/Tests
 
 elif [ "$1" = "run-tests" ];
     then

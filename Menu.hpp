@@ -22,6 +22,7 @@ class Menu{
             std::cout << "Input in wrong format, please provide integers";
 		
         }
+        std::cout << std::endl;
         return input;
         
     };

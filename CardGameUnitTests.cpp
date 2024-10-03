@@ -2,7 +2,7 @@
 #include "./Deck.hpp"
 #include "./Menu.hpp"
 
-namespace {
+namespace CardGameTest{
 class CardGameUnitTests : public testing::Test {
   protected:
     Deck deck;        
@@ -40,13 +40,25 @@ TEST_F(CardGameUnitTests, AddDrawTakeTests)
 
 TEST_F(CardGameUnitTests, ShuffleTest)
 {
-  EXPECT_EQ(52, deck.Size().second);
-  deck.Add(12);
+  deck.Add(1);
   std::string beforeShuffle = deck.Reveal();
+  deck.Shuffle();
   std::string afterShuffle = deck.Reveal();
   EXPECT_EQ(beforeShuffle, afterShuffle);
+
+  deck.Add(12);
+  beforeShuffle = deck.Reveal();
+  const std::string beforeShuffleComp = deck.Reveal();
+  EXPECT_EQ(beforeShuffle, beforeShuffleComp); 
   deck.Shuffle();
   afterShuffle = deck.Reveal();
   EXPECT_NE(beforeShuffle, afterShuffle);
 }
+
+TEST_F(CardGameUnitTests, CardFormatTest)
+{
+  deck.Add(1);
+  std::string str = deck.Reveal();
+  EXPECT_TRUE(!std::isdigit(str.at(0)) && std::isdigit(str.at(1)));
 }
+} //namespace

@@ -27,11 +27,12 @@ int main()
                 menu.PrintString(deck.Take(menu.GetInput()));
                 break;
             case 5:
-                deck.Shuffle();
+                menu.PrintString(deck.Shuffle());
                 break;
             case 6:
                 ss << "Deck size: " << deck.Size().first << ", Container size: " << deck.Size().second << std::endl;
                 menu.PrintString(ss.str());
+                ss.str("");
                 break;
             case 7:
                 menu.PrintString(deck.Reveal());

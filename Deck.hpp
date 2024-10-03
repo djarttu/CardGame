@@ -16,7 +16,7 @@ class Deck{
     std::string Take(uint16_t numOfCards);
     std::string Reveal();
     std::string RevealTop();
-    void Shuffle();
+    std::string Shuffle();
     std::pair<uint16_t, uint16_t> Size();
     
     private:

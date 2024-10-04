@@ -10,6 +10,6 @@ run-tests            =     run tests
      
 play                 =     play
      
---clean              =     configures cmake files if wanted
+--clean              =     configures cmake files and does clean build if wanted
      
 example "./CardGameBuildAndRun.sh build-and-play"

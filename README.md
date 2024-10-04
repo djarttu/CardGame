@@ -2,14 +2,14 @@ chmod a+x ./CardGameBuildAndRun.sh
 
 ./CardGameBuildAndRun.sh
 
-     build-and-play       =     build app and play
+build-and-play       =     build app and play
      
-     build-and-run-tests  =     build tests
+build-and-run-tests  =     build tests
      
-     run-tests            =     run tests
+run-tests            =     run tests
      
-     play                 =     play
+play                 =     play
      
-     --clean              =     configures cmake files
+--clean              =     configures cmake files if wanted
      
 example "./CardGameBuildAndRun.sh build-and-play"

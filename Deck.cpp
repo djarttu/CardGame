@@ -1,7 +1,9 @@
-#include <iostream>
-#include <ctime>
 #include <algorithm>
+#include <ctime>
+#include <iostream>
 #include <random>
+#include <sstream>
+
 #include "./Deck.hpp"
 
 Deck::Deck()
@@ -10,15 +12,15 @@ Deck::Deck()
 };
 
 
-std::string Deck::Add(uint16_t numOfCards)
+std::string Deck::Add(uint16_t amount)
 {
 	std::stringstream ss;
-	if(numOfCards > 52 || numOfCards < 1)
+	if(amount > 52 || amount < 1)
 	{
 		ss << "Wrong amount given";
 		return ss.str();
 	}   
-	const std::vector<Card> availableCards = GetFromContainer(numOfCards);
+	const std::vector<Card> availableCards = GetFromContainer(amount);
 	if(availableCards.size() > 0){
 		deck.insert(deck.end(), availableCards.begin(), availableCards.end());
 	}
@@ -96,7 +98,7 @@ std::string Deck::RevealTop()
 	}
 	else
 	{
-		ss << "Deck is empty \n";
+		ss << "Deck is empty";
 	}
 	return ss.str();
 };
@@ -118,7 +120,7 @@ std::pair<uint16_t, uint16_t> Deck::Size()
 	return std::make_pair(deck.size(), cardContainer.size());
 };
 
-void Deck::FillCardContainer(){
+const void Deck::FillCardContainer(){
 	for(uint16_t i = 0; i<4; i++){
 		for(uint16_t v = 1; v<14; v++){
 			Card temp;
@@ -131,10 +133,10 @@ void Deck::FillCardContainer(){
 
 std::vector<Card> Deck::GetFromContainer(uint16_t amount)
 {
-	std::vector<Card> temporary;
+	std::vector<Card> temporaryVec;
 	if(cardContainer.size() == 0)
 	{
-		return temporary;
+		return temporaryVec;
 	}
 	if(amount > cardContainer.size())
 	{
@@ -144,10 +146,10 @@ std::vector<Card> Deck::GetFromContainer(uint16_t amount)
 	{
 		srand(unsigned(time(nullptr)));
 		unsigned int randomNum = rand() % cardContainer.size();
-		temporary.emplace_back(cardContainer.at(randomNum));
+		temporaryVec.emplace_back(cardContainer.at(randomNum));
 		cardContainer.erase(cardContainer.begin() + randomNum);
 	}
-	return temporary;
+	return temporaryVec;
 };
 
 void Deck::PushBackIntoContainer(const std::vector<Card>& returnedCards)

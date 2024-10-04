@@ -1,6 +1,7 @@
 #include <iostream>
-#include "./Menu.hpp"
+
 #include "./Deck.hpp"
+#include "./Menu.hpp"
 
 int main()
 {
@@ -41,10 +42,10 @@ int main()
                 menu.PrintString(deck.RevealTop());
                 break;
             case 0:
-                menu.PrintString("Great to see you, next time");
+                menu.PrintString("Great to see you, until next time");
                 break;
             default:
-                menu.PrintString("Oh, you want to be nasty with me attaboy, give a proper value");
+                menu.PrintString("Give a proper value, please");
                 break;
         }
     } while (choice != 0);

@@ -1,7 +1,8 @@
+#include <cstdint>
 #include <iostream>
 #include <limits>
-#include <cstdint>
 #include <sstream>
+
 
 class Menu{
     public:
@@ -13,13 +14,13 @@ class Menu{
         PrintString(menuString);
     };
     
-    uint16_t GetInput(){
+    inline uint16_t GetInput(){
         uint16_t input;
         while(!(std::cin >> input))        
         {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Input in wrong format, please provide integers";
+            PrintString("Input in wrong format, please provide integers");
 		
         }
         std::cout << std::endl;
@@ -27,7 +28,7 @@ class Menu{
         
     };
     
-    void PrintString(const std::string& string)
+    inline void PrintString(const std::string& string)
     {
         std::cout << string << std::endl;
         return;
@@ -36,7 +37,7 @@ class Menu{
     private:
     std::string menuString; 
 
-    void createMenuString(){
+    inline void createMenuString(){
         std::stringstream ss;
         ss << "\n"
         << "***Main menu***" << std::endl

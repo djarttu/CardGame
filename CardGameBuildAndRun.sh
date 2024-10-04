@@ -34,19 +34,19 @@ for arg in "$@"; do
             fi           
             cmake --build build --target CardGame
             ./build/CardGame   
-            exit;;
+            ;;
         'build-and-run-tests')
             if [ -f build/Tests ]; then
                 rm build/Tests
             fi
             cmake --build build --target Tests
             ./build/Tests 
-            exit;;
+            ;;
         'run-tests')
             ./build/Tests 
-            exit;;
+            ;;
         'play')
             ./build/CardGame   
-            exit;;
+            ;;
     esac
 done

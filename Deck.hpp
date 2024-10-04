@@ -1,7 +1,6 @@
 #include <array>
-#include <vector>
 #include <cstdint>
-#include <sstream>
+#include <vector>
 
     
 struct Card {
@@ -24,7 +23,7 @@ class Deck{
     std::vector<Card> cardContainer;
     std::vector<Card> deck;
     
-    void FillCardContainer();
+    const void FillCardContainer();
     
     std::vector<Card> GetFromContainer(uint16_t amount);
 

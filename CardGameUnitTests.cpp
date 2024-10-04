@@ -1,10 +1,11 @@
 #include <gtest/gtest.h>
+
 #include "./Deck.hpp"
 
 namespace CardGameTest{
 class CardGameUnitTests : public testing::Test {
   protected:
-    Deck deck;        
+    Deck deck; 
 };
 
 TEST_F(CardGameUnitTests, AddDrawTakeTests) 
@@ -35,6 +36,12 @@ TEST_F(CardGameUnitTests, AddDrawTakeTests)
   deck.Take(10);
   EXPECT_EQ(2, deck.Size().first);
   EXPECT_EQ(fullStack - 2, deck.Size().second);
+
+  deck.Add(55);
+  EXPECT_EQ(fullStack - 2, deck.Size().second);
+
+  deck.Take(55);
+  EXPECT_EQ(fullStack - 2, deck.Size().second);
 }
 
 TEST_F(CardGameUnitTests, ShuffleTest)
@@ -60,4 +67,5 @@ TEST_F(CardGameUnitTests, CardFormatTest)
   std::string str = deck.Reveal();
   EXPECT_TRUE(!std::isdigit(str.at(0)) && std::isdigit(str.at(1)));
 }
+
 } //namespace

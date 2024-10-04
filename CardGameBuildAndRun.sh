@@ -18,6 +18,8 @@ if [ ! -d googletest ] || [ ! -f .gitmodules ];then
     git submodule update --init --recursive;
 fi
 
+git submodule update --init --recursive;
+
 for arg in "$@"; do
     case "$arg" in
         '--clean')                cmake -S . -B build;;

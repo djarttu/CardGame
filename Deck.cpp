@@ -30,18 +30,15 @@ std::string Deck::Add(uint16_t amount)
 
 std::string Deck::Draw()
 {
-	std::string string;
 	std::vector<Card> drawCard;
 	if(deck.size() == 0)
 	{
-		string = "Deck is empty";
-		return string;
+		return "Deck is empty";
 	}
 	drawCard.emplace_back(deck.back());
 	deck.pop_back();
 	PushBackIntoContainer(drawCard);
-	string = "One card returned into container";
-	return string;
+	return "One card returned into container";
 };
 
 std::string Deck::Take(uint16_t amount){

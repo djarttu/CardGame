@@ -14,7 +14,7 @@ class Menu{
         PrintString(menuString);
     };
     
-    inline uint16_t GetInput(){
+    uint16_t GetInput(){
         uint16_t input;
         while(!(std::cin >> input))        
         {
@@ -28,7 +28,7 @@ class Menu{
         
     };
     
-    inline void PrintString(const std::string& string)
+    void PrintString(const std::string& string)
     {
         std::cout << string << std::endl;
         return;
@@ -37,7 +37,7 @@ class Menu{
     private:
     std::string menuString; 
 
-    inline void createMenuString(){
+    void createMenuString(){
         std::stringstream ss;
         ss << "\n"
         << "***Main menu***" << std::endl

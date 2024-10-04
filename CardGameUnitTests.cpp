@@ -8,7 +8,7 @@ class CardGameUnitTests : public testing::Test {
     Deck deck; 
 };
 
-TEST_F(CardGameUnitTests, AddDrawTakeTests) 
+TEST_F(CardGameUnitTests, AddTests) 
 {
   constexpr uint16_t fullStack = 52;
   EXPECT_EQ(fullStack, deck.Size().second);
@@ -17,11 +17,7 @@ TEST_F(CardGameUnitTests, AddDrawTakeTests)
   EXPECT_EQ(fullStack - 1, deck.Size().second);
   EXPECT_EQ(1, deck.Size().first);
 
-  deck.Draw();
-  EXPECT_EQ(fullStack, deck.Size().second);
-  EXPECT_EQ(0, deck.Size().first);
-
-  deck.Add(12);
+  deck.Add(11);
   EXPECT_EQ(12, deck.Size().first);
   EXPECT_EQ(fullStack - 12, deck.Size().second);
 
@@ -29,19 +25,40 @@ TEST_F(CardGameUnitTests, AddDrawTakeTests)
   EXPECT_EQ(24, deck.Size().first);
   EXPECT_EQ(fullStack - 24, deck.Size().second);
 
+  deck.Add(30);
+  EXPECT_EQ(fullStack, deck.Size().first);
+  EXPECT_EQ(0, deck.Size().second);
+
+  deck.Add(-12);
+  EXPECT_EQ(fullStack, deck.Size().first);
+  EXPECT_EQ(0, deck.Size().second);
+}
+
+TEST_F(CardGameUnitTests, DrawTakeTests)
+{
+  constexpr uint16_t fullStack{52};
+  deck.Add(fullStack);
+
+  deck.Draw();
+  EXPECT_EQ(1, deck.Size().second);
+  EXPECT_EQ(fullStack - 1, deck.Size().first);
+
+  deck.Add();
   deck.Take(12);
-  EXPECT_EQ(12, deck.Size().first);
-  EXPECT_EQ(fullStack - 12, deck.Size().second);
+  EXPECT_EQ(fullStack - 12, deck.Size().first);
+  EXPECT_EQ(12, deck.Size().second);
 
-  deck.Take(10);
-  EXPECT_EQ(2, deck.Size().first);
-  EXPECT_EQ(fullStack - 2, deck.Size().second);
+  deck.Take(40);
+  EXPECT_EQ(fullStack, deck.Size().second);
+  EXPECT_EQ(0, deck.Size().first);
 
-  deck.Add(55);
-  EXPECT_EQ(fullStack - 2, deck.Size().second);
-
+  deck.Add(fullStack);
   deck.Take(55);
-  EXPECT_EQ(fullStack - 2, deck.Size().second);
+  EXPECT_EQ(fullStack, deck.Size().first);
+  EXPECT_EQ(0, deck.Size().second);
+
+  deck.Take(-12);
+  EXPECT_EQ(0, deck.Size().second);
 }
 
 TEST_F(CardGameUnitTests, ShuffleTest)

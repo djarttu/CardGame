@@ -10,9 +10,10 @@ help(){
 }
 
 
+
+
 if [ ! -d googletest ] || [ ! -f .gitmodules ];then
     git submodule add https://github.com/google/googletest.git
-    git submodule update --init --recursive;
 fi
 
 git submodule update --init --recursive;

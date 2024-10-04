@@ -6,7 +6,7 @@ help(){
      build-and-run-tests  =     build tests
      run-tests            =     run tests
      play                 =     play
-     --clean              =     configures cmake files"
+     --clean              =     configures cmake files and does clean build if wanted"
 }
 
 

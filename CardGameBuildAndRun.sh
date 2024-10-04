@@ -9,9 +9,6 @@ help(){
      --clean              =     configures cmake files"
 }
 
-if [ ! -d build/CMakeFiles ]; then
-    cmake -S . -B build;
-fi
 
 if [ ! -d googletest ] || [ ! -f .gitmodules ];then
     git submodule add https://github.com/google/googletest.git
@@ -19,6 +16,10 @@ if [ ! -d googletest ] || [ ! -f .gitmodules ];then
 fi
 
 git submodule update --init --recursive;
+
+if [ ! -d build/CMakeFiles ]; then
+    cmake -S . -B build;
+fi
 
 for arg in "$@"; do
     case "$arg" in

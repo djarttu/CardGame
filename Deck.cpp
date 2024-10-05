@@ -128,7 +128,7 @@ const void Deck::FillCardContainer(){
 	}
 };
 
-std::vector<Card> Deck::GetFromContainer(uint16_t amount)
+std::vector<Deck::Card> Deck::GetFromContainer(uint16_t amount)
 {
 	std::vector<Card> temporaryVec;
 	if(cardContainer.size() == 0)

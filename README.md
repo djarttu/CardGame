@@ -1,3 +1,5 @@
+Prerequisites: g++ and cmake must be installed.
+
 To build and run game and tests:
 
 chmod a+x ./CardGameBuildAndRun.sh

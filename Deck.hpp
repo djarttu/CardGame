@@ -9,10 +9,10 @@ class Deck{
     std::string Add(uint16_t numOfCards = 1);
     std::string Draw();
     std::string Take(uint16_t numOfCards);
-    std::string Reveal();
-    std::string RevealTop();
+    const std::string Reveal() const;
+    const std::string RevealTop() const;
     std::string Shuffle();
-    std::pair<uint16_t, uint16_t> Size();
+    std::pair<uint16_t, uint16_t> Size() const;
     
     private:
 

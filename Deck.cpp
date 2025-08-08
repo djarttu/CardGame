@@ -67,7 +67,7 @@ std::string Deck::Take(uint16_t amount){
 	return ss.str();
 };
 
-std::string Deck::Reveal()
+const std::string Deck::Reveal() const
 {
 	std::stringstream ss;
 	if(!deck.empty())
@@ -86,7 +86,7 @@ std::string Deck::Reveal()
 	return ss.str();
 };
 
-std::string Deck::RevealTop()
+const std::string Deck::RevealTop() const
 {
 	std::stringstream ss;
 	if(!deck.empty())
@@ -112,7 +112,7 @@ std::string Deck::Shuffle()
 	return "Shuffled puffled";
 }
 
-std::pair<uint16_t, uint16_t> Deck::Size()
+std::pair<uint16_t, uint16_t> Deck::Size() const
 {
 	return std::make_pair(deck.size(), cardContainer.size());
 };
